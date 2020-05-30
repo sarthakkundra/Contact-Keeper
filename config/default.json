@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://contact-keeper-app:Sonukundra13@contactkeeper-lnza2.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "2ndAuthProject"
+}
