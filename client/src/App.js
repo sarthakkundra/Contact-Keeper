@@ -5,7 +5,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Navbar from "./components/layout/Navbar";
 
-import ContactState from './context/contact/ContactContext';
+import ContactState from './context/contact/ContactState';
 
 const App = () => {
   return (
