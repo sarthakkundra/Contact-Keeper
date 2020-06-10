@@ -47,7 +47,7 @@ router.post('/', [auth, [check('name', 'Name is required').exists()]], async (re
       } catch (e) {
           
         console.error(e.message);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json({ msg: 'Internal Server Error'});
       }
 })
 

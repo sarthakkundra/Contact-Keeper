@@ -65,7 +65,7 @@ router.post(
         } )
     } catch(e){
         console.error(e.message);
-        res.status(500).send(e);
+        res.status(500).json({ msg: e});
     }
 
   }

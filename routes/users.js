@@ -30,7 +30,7 @@ router.post(
       const duplicate = await User.findOne({ email });
 
       if (duplicate) {
-        res.status(400).send("User already exists, try logging in");
+        res.status(400).json({msg: "User already exists, try logging in"});
       }
 
       var user = new User({
@@ -62,7 +62,7 @@ router.post(
     //   res.status(200).send("User saved");
     } catch (e) {
       console.error(e.message);
-      res.status(500).send(e);
+      res.status(500).json({ msg: 'Reigstration failed'});
     }
   }
 );
