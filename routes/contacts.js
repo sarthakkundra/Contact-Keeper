@@ -44,6 +44,8 @@ router.post('/', [auth, [check('name', 'Name is required').exists()]], async (re
             user: req.user.id
         })
        const contact =  await newContact.save();
+       res.json(contact);
+       
       } catch (e) {
           
         console.error(e.message);

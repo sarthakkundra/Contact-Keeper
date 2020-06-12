@@ -1,20 +1,16 @@
 import React, { useContext, useEffect } from "react";
-import Contact from '../contacts/Contact';
-import ContactForm from '../contacts/ContactForm';
-import ContactFilter from '../contacts/ContactFilter';
+import Contact from "../contacts/Contact";
+import ContactForm from "../contacts/ContactForm";
+import ContactFilter from "../contacts/ContactFilter";
 
-import AuthContext from '../../context/auth/AuthContext';
-
-
+import AuthContext from "../../context/auth/AuthContext";
 
 export const Home = () => {
-
   const authContext = useContext(AuthContext);
 
-
-    useEffect(() => {
+  useEffect(() => {
     authContext.loadUser();
-  }, [])
+  }, []);
 
   return (
     <div className='grid-2'>
@@ -23,9 +19,8 @@ export const Home = () => {
       </div>
       <div>
         <ContactFilter />
-      <Contact />
+        <Contact />
       </div>
-
     </div>
   );
 };

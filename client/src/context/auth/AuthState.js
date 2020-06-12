@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import axios from "axios";
 
-import setAuthToken from '../../utils/setAuthToken';
+import setAuthToken from "../../utils/setAuthToken";
 
 import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
@@ -28,22 +28,17 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const loadUser = async () => {
-
-    if(localStorage.token){
+    if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
     try {
-      
-      const res = await axios.get('/api/auth');
-      
-      
-      dispatch({ type: USER_LOADED, payload: res.data});
+      const res = await axios.get("/api/auth");
 
+      dispatch({ type: USER_LOADED, payload: res.data });
     } catch (e) {
-
-      dispatch({ type: AUTH_ERROR})
+      dispatch({ type: AUTH_ERROR });
     }
-  }
+  };
   const register = async (formData) => {
     const config = {
       headers: {
@@ -61,31 +56,27 @@ const AuthState = (props) => {
     }
   };
 
-  const login = async(formData) => {
-
+  const login = async (formData) => {
     const config = {
       header: {
-        "Content-Type": "application/json"
-      }
-    }
+        "Content-Type": "application/json",
+      },
+    };
 
     try {
+      const res = await axios.post("/api/auth", formData, config);
 
-      const res = await axios.post('/api/auth', formData, config)
-
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data})
-
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     } catch (e) {
-      
-      dispatch({ type: LOGIN_FAIL, payload: e.response.data.msg})
+      dispatch({ type: LOGIN_FAIL, payload: e.response.data.msg });
     }
-  }
+  };
 
   const logout = () => dispatch({ type: LOGOUT });
 
   const clearError = () => {
-    dispatch({ type: CLEAR_ERRORS})
-  }
+    dispatch({ type: CLEAR_ERRORS });
+  };
 
   return (
     <AuthContext.Provider
@@ -99,7 +90,7 @@ const AuthState = (props) => {
         login,
         logout,
         clearError,
-        loadUser
+        loadUser,
       }}
     >
       {props.children}
